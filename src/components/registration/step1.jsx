@@ -4,19 +4,9 @@ import { FaArrowDown, FaGraduationCap, FaRegEnvelope } from 'react-icons/fa';
 import { BsTelephone } from 'react-icons/bs';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import { MdOutlineArrowDropDown } from 'react-icons/md';
+import { MdOutlineArrowDropDown, MdPersonOutline } from 'react-icons/md';
 
-const Step1 = ({ onNext }) => {
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-    });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+const Step1 = ({ onNext, formData, handleChange, errors }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -26,31 +16,36 @@ const Step1 = ({ onNext }) => {
         onNext();
     };
 
+    // {
+    //     
+    //     
+    //     "location": "nigeria",
+    //     
+    //    
+    //     "website": "",
+    //     
+    //     
+    //     "role": "Teacher",
+    //    
+    // }
+
     return (
         <form onSubmit={handleSubmit} className='mx-auto mb-0  max-w-md space-y-4'>
-            {/* <div className="mb-4">
-                <label htmlFor="firstName" className="block text-sm font-medium  text-gray-700">
-                    First Name
-                </label>
-                <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    className="mt-1 p-2 border border-gray-300 rounded-md w-full"
-                    required
-                />
-            </div> */}
-            {/* dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white */}
+
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                     <FaGraduationCap className='text-xl text-gray-400' />
 
                 </div>
-                <input type="text" className=" border-2 p-3 border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="text"
+                    className={`border-2 p-3 ${errors.name ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
-                 "
+                    `}
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
                     placeholder="School name" />
             </div>
             <div className="relative mb-4">
@@ -58,19 +53,28 @@ const Step1 = ({ onNext }) => {
                     <FaRegEnvelope className='text-xl text-gray-400' />
 
                 </div>
-                <input type="text" className=" border-2 p-3 border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="email" className={`border-2 p-3 ${errors.email ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
-                 "
-                    placeholder="email@gmail.com" />
+                 `}
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="email@gmail.com" required />
             </div>
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                     <BsTelephone className='text-xl text-gray-400' />
 
                 </div>
-                <input type="text" className=" border-2 p-3 border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="text" className={`border-2 p-3 ${errors.phoneNumber ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
-                 "
+                 `}
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    value={formData.phoneNumber}
+                    onChange={handleChange}
+                    required
                     placeholder="Phone number" />
             </div>
             <div className="relative mb-4">
@@ -79,26 +83,76 @@ const Step1 = ({ onNext }) => {
 
 
                 </div>
-                <input type="text" className=" border-2 p-3 border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="text" className={`border-2 p-3 ${errors.address ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
-                 "
+                 `}
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    required
                     placeholder="Physical Address" />
             </div>
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                     <HiOutlineLocationMarker className='text-xl text-gray-400' />
 
+
                 </div>
-                <select className=" border-2 py-3 px-10 border-gray-300 text-gray-900 text-sm rounded-lg block w-full  
+                <input type="text" className={`border-2 p-3 ${errors.city ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
-                 "
+                 `}
+                    id="city"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                    required
+                    placeholder="City" />
+            </div>
+            <div className="relative mb-4">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                    <HiOutlineLocationMarker className='text-xl text-gray-400' />
+
+                </div>
+                <select className={`border-2 p-3 ${errors.city ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                 
+                 `}
+                    id="state"
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
+                    required
                 >
-                    <option value="">Select State</option>
+                    <option value="" hidden>Select State</option>
+                    <option value="Oyo" >Oyo</option>
+                    <option value="Lagos" >Lagos</option>
+                    <option value="Ogun" >Ogun</option>
+                    <option value="Abuja" >Abuja</option>
+                    <option value="Ekiti" >Ekiti</option>
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                     <MdOutlineArrowDropDown className="text-3xl text-gray-500" />
                 </div>
             </div>
+
+            <div className="relative mb-4">
+                <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
+                    <MdPersonOutline className='text-xl text-gray-400' />
+
+
+                </div>
+                <input type="text" className={`border-2 p-3 ${errors.role ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                 
+                 `}
+                    id="role"
+                    name="role"
+                    value={formData.role}
+                    onChange={handleChange}
+                    required
+                    placeholder="Role (e.g School Principal)" />
+            </div>
+
+
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                     <FaGraduationCap className='text-xl text-gray-400' />
@@ -109,11 +163,18 @@ const Step1 = ({ onNext }) => {
 
                 <select
                     className="border-2 py-3 px-10 border-gray-300 text-gray-900 text-sm rounded-lg block w-full appearance-none bg-no-repeat bg-right-center pr-10"
+                    id="school_category"
+                    name="school_category"
+                    value={formData.school_category}
+                    onChange={handleChange}
+                    required
+
                 >
-                    <option value="">Select School Category</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
+                    <option value="" hidden>Select School Category</option>
+                    <option value="Primary">Primary</option>
+                    <option value="Secondary">Secondary</option>
+                    <option value="College">College</option>
+                    <option value="Others">Others</option>
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                     <MdOutlineArrowDropDown className="text-3xl text-gray-500" />

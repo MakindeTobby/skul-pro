@@ -7,10 +7,10 @@ const App = () => {
     <div className="md:px-10 px-2">
       <Navbar />
       <Hero />
-      <Companies />
-      <Courses />
-      <Achievement />
-      <Categories />
+      {/* <Companies /> */}
+      {/* <Courses /> */}
+      {/* <Achievement /> */}
+      {/* <Categories /> */}
       <Feedback />
       <CTA />
       <Footer />

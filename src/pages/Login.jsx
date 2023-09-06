@@ -1,7 +1,9 @@
-import { FaEye, FaRegEnvelope } from "react-icons/fa";
+import { useState } from "react";
+import { FaEye, FaEyeSlash, FaRegEnvelope } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+    const [show, setShow] = useState(false);
     return (
         <>
 
@@ -30,11 +32,17 @@ const Login = () => {
                         <div className="relative mb-6">
                             <label htmlFor="password" className="sr-only">Password</label>
 
-                            <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                                <FaEye className='text-xl text-gray-400' />
+                            <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 cursor-pointer" onClick={() => setShow(!show)}>
+                                {
+                                    show ? <FaEyeSlash className='text-xl text-gray-400' /> :
+                                        <FaEye className='text-xl text-gray-400' />
+
+
+                                }
+
                             </div>
-                            <input type="password" className="bg-white border 
-                            p-4 border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10  " placeholder="Enter password" />
+                            <input type={!show ? "password" : "text"} className="bg-white border 
+                            p-4 border-gray-300 text-gray-900 text-sm rounded-lg block w-full pl-10  " placeholder="Enter password" autoComplete="new-password" />
                         </div>
 
 
