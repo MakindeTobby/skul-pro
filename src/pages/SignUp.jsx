@@ -1,8 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RegistrationPage from "../components/registration/RegistrationPage";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
+    const auth = () => {
+        const jwt = localStorage.getItem("Auth")
+        if (jwt) {
+            return true
+        } else {
+            return false
+        }
+    }
+    const userD = auth()
+
+    useEffect(() => {
+        if (userD) {
+            navigate("/")
+        }
+    }, [])
 
     const [currentStep, setCurrentStep] = useState(0);
 
@@ -25,7 +40,7 @@ const SignUp = () => {
                         <div className="mb-4 text-center mx-auto  max-w-md space-y-4">
                             <h1 className="text-3xl text-slate-800 font-bold mb-4">Create an Account</h1>
                             {currentStep === 0 && <span className="text-sm">Please fill in your school details so we can create an account and remember your school.</span>}
-                            {currentStep === 1 && <span className="text-sm">Please fill in your eight digit password so we can create an account and remember your school.</span>}
+                            {currentStep === 1 && <span className="text-sm">Please fill in your eight(8) - twelve(12) digit password so we can create an account and remember your school.</span>}
                             {currentStep === 2 && <span className="text-sm">We are almost done with creating your account.</span>}
 
                         </div>

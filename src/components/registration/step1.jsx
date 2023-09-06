@@ -162,7 +162,9 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
 
 
                 <select
-                    className="border-2 py-3 px-10 border-gray-300 text-gray-900 text-sm rounded-lg block w-full appearance-none bg-no-repeat bg-right-center pr-10"
+                    className={`border-2 p-3 ${errors.school_category ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                 
+                    `}
                     id="school_category"
                     name="school_category"
                     value={formData.school_category}

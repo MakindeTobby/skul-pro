@@ -33,6 +33,8 @@ const Step2 = ({ onNext, onPrev, formData, handleChange, handleSubmitForm, error
                     <input type="password"
                         id="password"
                         name="password"
+                        minLength={4}
+                        maxLength={12}
                         value={formData.password}
                         onChange={handleChange}
                         autoComplete="new-password"
@@ -52,7 +54,8 @@ const Step2 = ({ onNext, onPrev, formData, handleChange, handleSubmitForm, error
                  `}
                         id="confirmPassword"
                         name="confirmPassword"
-
+                        minLength={4}
+                        maxLength={12}
                         ref={confirmPassword}
                         autoComplete="new-password"
                         placeholder="Re-Enter Password" required />
@@ -62,6 +65,7 @@ const Step2 = ({ onNext, onPrev, formData, handleChange, handleSubmitForm, error
                     <button
                         type="button"
                         onClick={onPrev}
+                        disabled={loading ? true : false}
                         className="px-4 py-3 border-2 border-slate-800 text-slate-800
                         transition duration-300 transform active:scale-95 ease-in-out
                         hover:bg-slate-800 hover:text-white rounded-md w-1/2"
@@ -71,6 +75,7 @@ const Step2 = ({ onNext, onPrev, formData, handleChange, handleSubmitForm, error
                     <button
                         type="button"
                         onClick={handleSubmitForm}
+                        disabled={loading ? true : false}
                         className="px-4 py-3 bg-slate-800 text-white rounded-md
                         transition duration-300 transform active:scale-95 ease-in-out
                         w-1/2"

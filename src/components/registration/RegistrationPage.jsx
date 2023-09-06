@@ -6,10 +6,13 @@ import Step2 from './step2';
 import Step3 from './step3';
 import { toast } from 'react-toastify';
 import usePublicHttp from '../../hooks/usePublicHttp';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationPage = ({ currentStep, setCurrentStep, handleNext, handlePrev }) => {
     const [loading, setLoading] = useState(false);
     const confirmPassword = useRef("");
+    const navigate = useNavigate();
     const publicHttp = usePublicHttp();
     const [formData, setFormData] = useState({
         email: '',
@@ -63,24 +66,26 @@ const RegistrationPage = ({ currentStep, setCurrentStep, handleNext, handlePrev 
 
         }
 
-        console.log(formData);
 
         try {
             setLoading(true)
-            const { data } = await publicHttp.post("/auth/register", formData)
-            console.log(data);
-            // if (data.status === "Success") {
-            //     toast.success(data.message)
-            //     storeCompanyId(data.company?.companyId);
-            //     navigate.replace(`/admin/${data.company?.companyId}`)
-            // } else {
-            //     toast.error(data.message)
-            //     return
-            // }
+            const { data } = await axios.post("https://myschoolapp.onrender.com/auth/register", formData)
+            if (data.message) {
+                toast.success(data.message)
+
+                localStorage.setItem("Auth", data.token)
+                navigate('/');
+                setLoading(false);
+
+            } else {
+                toast.error(data.message);
+                setLoading(false);
+
+                return
+            }
             setLoading(false)
         } catch (error) {
-            // toast.error(error.response.data.message);
-            console.log(error);
+            toast.error(error?.response?.data.message);
             setLoading(false);
         }
 
