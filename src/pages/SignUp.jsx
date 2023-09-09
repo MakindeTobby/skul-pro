@@ -33,7 +33,7 @@ const SignUp = () => {
 
             <section className="w-full flex flex-wrap h-[100vh]">
 
-                <div className="w-full px-2 py-24 sm:px-2 sm:py-4 lg:w-1/2 lg:px-16 lg:py-16 md:py-16 h-[100vh] overflow-y-auto">
+                <div className="w-full px-2 py-8 sm:px-2 sm:py-4 lg:w-1/2 lg:px-16 lg:py-16 md:py-16 h-[100vh] overflow-y-auto">
                     <Link to={"/"} className="">
                         <img src="/logo/scHub_logo.png" alt="logo" />
                     </Link>
