@@ -35,7 +35,7 @@ const SignUp = () => {
 
                 <div className="w-full px-2 py-8 sm:px-2 sm:py-4 lg:w-1/2 lg:px-16 lg:py-16 md:py-16 h-[100vh] overflow-y-auto">
                     <Link to={"/"} className="">
-                        <img src="/logo/scHub_logo.png" alt="logo" />
+                        <img src="/logo/logo.png" alt="logo" width={100} />
                     </Link>
                     <div className="">
                         <div className="mb-4 text-center mx-auto  max-w-md space-y-4">

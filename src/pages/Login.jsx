@@ -102,12 +102,10 @@ const Login = () => {
         <>
 
             <section className="relative flex flex-wrap lg:h-screen lg:items-center py-8 lg:py-0 ">
-                {/* <Link to={"/"} className="absolute top-10">
-                    <img src="/logo/scHub_logo.png" alt="logo" />
-                </Link> */}
+
                 <div className="w-full px-4 py-8 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24 h-[100vh] overflow-y-auto">
                     <Link to={"/"} className="">
-                        <img src="/logo/scHub_logo.png" alt="logo" />
+                        <img src="/logo/logo.png" alt="logo" width={100} />
                     </Link>
                     <form action="post" className="mx-auto mb-0 mt-8 max-w-md space-y-4" onSubmit={handleLogin}>
                         <div className="mx-auto max-w-lg text-start mb-6">
