@@ -114,7 +114,7 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
                     {errors.state ? <MdError className='text-xl text-red-500' /> : <HiOutlineLocationMarker className='text-xl text-gray-400' />}
 
                 </div>
-                <select className={`border-2 p-3 ${errors.city ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <select className={`border-2 p-3 ${errors.city ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-400 text-sm rounded-lg block w-full pl-10 
                  
                  `}
                     id="state"
@@ -162,7 +162,7 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
 
 
                 <select
-                    className={`border-2 p-3 ${errors.school_category ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                    className={`border-2 p-3 ${errors.school_category ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-400 text-sm rounded-lg block w-full pl-10 
                  
                     `}
                     id="school_category"
@@ -175,8 +175,6 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
                     <option value="" hidden>Select School Category</option>
                     <option value="Primary">Primary</option>
                     <option value="Secondary">Secondary</option>
-                    <option value="College">College</option>
-                    <option value="Others">Others</option>
                 </select>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                     <MdOutlineArrowDropDown className="text-3xl text-gray-500" />
