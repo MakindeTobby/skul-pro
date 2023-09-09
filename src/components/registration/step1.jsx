@@ -4,7 +4,7 @@ import { FaArrowDown, FaGraduationCap, FaRegEnvelope } from 'react-icons/fa';
 import { BsTelephone } from 'react-icons/bs';
 import { HiOutlineLocationMarker } from 'react-icons/hi';
 import { Link } from 'react-router-dom';
-import { MdOutlineArrowDropDown, MdPersonOutline } from 'react-icons/md';
+import { MdError, MdOutlineArrowDropDown, MdPersonOutline } from 'react-icons/md';
 
 const Step1 = ({ onNext, formData, handleChange, errors }) => {
 
@@ -34,11 +34,11 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
 
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <FaGraduationCap className='text-xl text-gray-400' />
+                    {errors.name ? <MdError className='text-xl text-red-500' /> : <FaGraduationCap className='text-xl text-gray-400' />}
 
                 </div>
                 <input type="text"
-                    className={`border-2 p-3 ${errors.name ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                    className={`border-2 p-3 ${errors.name ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                     `}
                     id="name"
@@ -50,10 +50,10 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
             </div>
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <FaRegEnvelope className='text-xl text-gray-400' />
+                    {errors.email ? <MdError className='text-xl text-red-500' /> : <FaRegEnvelope className='text-xl text-gray-400' />}
 
                 </div>
-                <input type="email" className={`border-2 p-3 ${errors.email ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="email" className={`border-2 p-3 ${errors.email ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                  `}
                     id="email"
@@ -64,10 +64,10 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
             </div>
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <BsTelephone className='text-xl text-gray-400' />
+                    {errors.phoneNumber ? <MdError className='text-xl text-red-500' /> : <BsTelephone className='text-xl text-gray-400' />}
 
                 </div>
-                <input type="text" className={`border-2 p-3 ${errors.phoneNumber ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="text" className={`border-2 p-3 ${errors.phoneNumber ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                  `}
                     id="phoneNumber"
@@ -79,11 +79,11 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
             </div>
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <HiOutlineLocationMarker className='text-xl text-gray-400' />
+                    {errors.address ? <MdError className='text-xl text-red-500' /> : <HiOutlineLocationMarker className='text-xl text-gray-400' />}
 
 
                 </div>
-                <input type="text" className={`border-2 p-3 ${errors.address ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="text" className={`border-2 p-3 ${errors.address ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                  `}
                     id="address"
@@ -95,11 +95,11 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
             </div>
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <HiOutlineLocationMarker className='text-xl text-gray-400' />
+                    {errors.city ? <MdError className='text-xl text-red-500' /> : <HiOutlineLocationMarker className='text-xl text-gray-400' />}
 
 
                 </div>
-                <input type="text" className={`border-2 p-3 ${errors.city ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="text" className={`border-2 p-3 ${errors.city ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                  `}
                     id="city"
@@ -111,10 +111,10 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
             </div>
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <HiOutlineLocationMarker className='text-xl text-gray-400' />
+                    {errors.state ? <MdError className='text-xl text-red-500' /> : <HiOutlineLocationMarker className='text-xl text-gray-400' />}
 
                 </div>
-                <select className={`border-2 p-3 ${errors.city ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <select className={`border-2 p-3 ${errors.city ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                  `}
                     id="state"
@@ -137,11 +137,11 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
 
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <MdPersonOutline className='text-xl text-gray-400' />
+                    {errors.role ? <MdError className='text-xl text-red-500' /> : <MdPersonOutline className='text-xl text-gray-400' />}
 
 
                 </div>
-                <input type="text" className={`border-2 p-3 ${errors.role ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                <input type="text" className={`border-2 p-3 ${errors.role ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                  `}
                     id="role"
@@ -155,14 +155,14 @@ const Step1 = ({ onNext, formData, handleChange, errors }) => {
 
             <div className="relative mb-4">
                 <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                    <FaGraduationCap className='text-xl text-gray-400' />
+                    {errors.school_category ? <MdError className='text-xl text-red-500' /> : <FaGraduationCap className='text-xl text-gray-400' />}
 
                 </div>
 
 
 
                 <select
-                    className={`border-2 p-3 ${errors.school_category ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                    className={`border-2 p-3 ${errors.school_category ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                     `}
                     id="school_category"

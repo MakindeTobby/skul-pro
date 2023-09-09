@@ -1,6 +1,6 @@
 // Step2.js
 import React from 'react';
-import { MdLock, MdLockPerson, MdPersonOutline } from 'react-icons/md';
+import { MdError, MdLock, MdLockPerson, MdPersonOutline } from 'react-icons/md';
 import { Link } from 'react-router-dom';
 
 const Step2 = ({ onNext, onPrev, formData, handleChange, handleSubmitForm, errors, confirmPassword, loading }) => {
@@ -25,8 +25,8 @@ const Step2 = ({ onNext, onPrev, formData, handleChange, handleSubmitForm, error
 
                 <div className="relative mb-4">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                        <MdLock className='text-xl text-gray-400'
-                        />
+                        {errors.password ? <MdError className='text-xl text-red-500' /> : <MdLock className='text-xl text-gray-400'
+                        />}
 
 
                     </div>
@@ -39,7 +39,7 @@ const Step2 = ({ onNext, onPrev, formData, handleChange, handleSubmitForm, error
                         onChange={handleChange}
                         autoComplete="new-password"
 
-                        className={` border-2 p-3 ${errors.password ? "border-red-500" : "border-gray-300"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
+                        className={` border-2 p-3 ${errors.password ? "border-red-500 bg-red-50" : "border-gray-300 bg-transparent"}  text-gray-900 text-sm rounded-lg block w-full pl-10 
                  
                         `}
                         placeholder="Create Password" required />
